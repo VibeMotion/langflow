@@ -17,6 +17,9 @@ importers:
       '@hookform/resolvers':
         specifier: ^3.6.0
         version: 3.10.0(react-hook-form@7.57.0(react@18.3.1))
+      '@jsonquerylang/jsonquery':
+        specifier: ^5.0.3
+        version: 5.0.3
       '@million/lint':
         specifier: ^1.0.0-rc.26
         version: 1.0.14(rollup@4.43.0)
@@ -1082,6 +1085,10 @@ packages:
 
   '@jsonquerylang/jsonquery@4.1.1':
     resolution: {integrity: sha512-Rfyvq70Zrb561BqSuXLsl0rG0/1tz913EQDL/4zpkp+laFGUxXIVPSaJWcdREJwADXLZDkQyaWplzEaPQvh+7A==}
+    hasBin: true
+
+  '@jsonquerylang/jsonquery@5.0.3':
+    resolution: {integrity: sha512-aH9paBzg4E2Kel/1e04GoqexIcH5tUMp0gdBhrA7aOFL4oJOIzcRv5Bdr31IJlzt+yP7BMJ3/tViSolFL3w8pw==}
     hasBin: true
 
   '@lezer/common@1.2.3':
@@ -6394,6 +6401,8 @@ snapshots:
       jsep: 1.4.0
 
   '@jsonquerylang/jsonquery@4.1.1': {}
+
+  '@jsonquerylang/jsonquery@5.0.3': {}
 
   '@lezer/common@1.2.3': {}
 
