@@ -1,14 +1,11 @@
 from typing_extensions import TypedDict
 
 from langflow.base.models.model import LCModelComponent
-from langflow.components.amazon.amazon_bedrock_model import AmazonBedrockComponent
 from langflow.components.models.anthropic import AnthropicModelComponent
 from langflow.components.models.azure_openai import AzureChatOpenAIComponent
 from langflow.components.models.google_generative_ai import GoogleGenerativeAIComponent
 from langflow.components.models.groq import GroqModel
-from langflow.components.models.nvidia import NVIDIAModelComponent
 from langflow.components.models.openai_chat_model import OpenAIModelComponent
-from langflow.components.models.sambanova import SambaNovaComponent
 from langflow.inputs.inputs import InputTypes, SecretStrInput
 from langflow.template.field.base import Input
 
@@ -212,30 +209,6 @@ except ImportError:
     pass
 
 try:
-    nvidia_inputs, nvidia_fields = _get_nvidia_inputs_and_fields()
-    MODEL_PROVIDERS_DICT["NVIDIA"] = {
-        "fields": nvidia_fields,
-        "inputs": nvidia_inputs,
-        "prefix": "",
-        "component_class": NVIDIAModelComponent(),
-        "icon": NVIDIAModelComponent.icon,
-    }
-except ImportError:
-    pass
-
-try:
-    bedrock_inputs, bedrock_fields = _get_amazon_bedrock_inputs_and_fields()
-    MODEL_PROVIDERS_DICT["Amazon Bedrock"] = {
-        "fields": bedrock_fields,
-        "inputs": bedrock_inputs,
-        "prefix": "",
-        "component_class": AmazonBedrockComponent(),
-        "icon": AmazonBedrockComponent.icon,
-    }
-except ImportError:
-    pass
-
-try:
     google_generative_ai_inputs, google_generative_ai_fields = _get_google_generative_ai_inputs_and_fields()
     MODEL_PROVIDERS_DICT["Google Generative AI"] = {
         "fields": google_generative_ai_fields,
@@ -247,17 +220,6 @@ try:
 except ImportError:
     pass
 
-try:
-    sambanova_inputs, sambanova_fields = _get_sambanova_inputs_and_fields()
-    MODEL_PROVIDERS_DICT["SambaNova"] = {
-        "fields": sambanova_fields,
-        "inputs": sambanova_inputs,
-        "prefix": "",
-        "component_class": SambaNovaComponent(),
-        "icon": SambaNovaComponent.icon,
-    }
-except ImportError:
-    pass
 
 MODEL_PROVIDERS = list(MODEL_PROVIDERS_DICT.keys())
 ALL_PROVIDER_FIELDS: list[str] = [field for provider in MODEL_PROVIDERS_DICT.values() for field in provider["fields"]]

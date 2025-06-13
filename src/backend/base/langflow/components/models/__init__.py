@@ -1,4 +1,3 @@
-from .aiml import AIMLModelComponent
 from .anthropic import AnthropicModelComponent
 from .azure_openai import AzureChatOpenAIComponent
 from .deepseek import DeepSeekModelComponent
@@ -8,7 +7,6 @@ from .huggingface import HuggingFaceEndpointsComponent
 from .language_model import LanguageModelComponent
 from .lmstudiomodel import LMStudioModelComponent
 from .mistral import MistralAIModelComponent
-from .nvidia import NVIDIAModelComponent
 from .ollama import ChatOllamaComponent
 from .openai_chat_model import OpenAIModelComponent
 from .openrouter import OpenRouterComponent
@@ -17,7 +15,6 @@ from .vertexai import ChatVertexAIComponent
 from .xai import XAIModelComponent
 
 __all__ = [
-    "AIMLModelComponent",
     "AnthropicModelComponent",
     "AzureChatOpenAIComponent",
     "ChatOllamaComponent",
@@ -29,7 +26,6 @@ __all__ = [
     "LMStudioModelComponent",
     "LanguageModelComponent",
     "MistralAIModelComponent",
-    "NVIDIAModelComponent",
     "OpenAIModelComponent",
     "OpenRouterComponent",
     "PerplexityComponent",

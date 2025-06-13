@@ -11,7 +11,7 @@ from langflow.base.models.model_input_constants import (
 from langflow.base.models.model_utils import get_model_name
 from langflow.components.helpers import CurrentDateComponent
 from langflow.components.helpers.memory import MemoryComponent
-from langflow.components.langchain_utilities.tool_calling import ToolCallingAgentComponent
+from langflow.components.tools.tool_calling import ToolCallingAgentComponent
 from langflow.custom.utils import update_component_build_config
 from langflow.io import BoolInput, DropdownInput, MultilineInput, Output
 from langflow.logging import logger
