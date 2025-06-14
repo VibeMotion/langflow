@@ -603,7 +603,7 @@ export default function Page({
                   shadowBoxWidth={shadowBoxWidth}
                   shadowBoxHeight={shadowBoxHeight}
                 />
-                <FlowToolbar />
+                {/* <FlowToolbar /> */}
               </>
             )}
             <MemoizedSidebarTrigger />
