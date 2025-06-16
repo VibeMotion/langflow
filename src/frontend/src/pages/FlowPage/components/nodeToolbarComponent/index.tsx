@@ -417,19 +417,21 @@ const NodeToolbarComponent = memo(
     const handleOpenChange = (open: boolean) => {
       setOpenShowMoreOptions && setOpenShowMoreOptions(open);
     };
+    // Mason changed here
 
-    const isCustomComponent = useMemo(() => {
-      const isCustom = data.type === "CustomComponent" && !data.node?.edited;
-      if (isCustom) {
-        data.node.edited = true;
-      }
-      return isCustom;
-    }, [data.type, data.node]);
+    // const isCustomComponent = useMemo(() => {
+    //   const isCustom = data.type === "CustomComponent" && !data.node?.edited;
+    //   if (isCustom) {
+    //     data.node.edited = true;
+    //   }
+    //   return isCustom;
+    // }, [data.type, data.node]);
+    const isCustomComponent = data.type === "CustomComponent";
 
     const renderToolbarButtons = useMemo(
       () => (
         <>
-          {hasCode && (
+          {isCustomComponent && (
             <ToolbarButton
               className={isCustomComponent ? "animate-pulse-pink" : ""}
               icon="Code"
