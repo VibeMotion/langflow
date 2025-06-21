@@ -607,9 +607,10 @@ export default function Page({
               </>
             )}
             <MemoizedSidebarTrigger />
-            <div className={cn(componentsToUpdate.length === 0 && "hidden")}>
+            {/* Mason-210625: turn off update component feature */}
+            {/* <div className={cn(componentsToUpdate.length === 0 && "hidden")}>
               <UpdateAllComponents />
-            </div>
+            </div> */}
             <SelectionMenu
               lastSelection={lastSelection}
               isVisible={selectionMenuVisible}

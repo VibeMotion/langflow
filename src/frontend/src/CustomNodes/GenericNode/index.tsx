@@ -272,10 +272,12 @@ function GenericNode({
     return useFlowStore.getState().nodes.filter((node) => node.selected).length;
   }, [selected]);
 
-  const shouldShowUpdateComponent = useMemo(
-    () => (isOutdated || hasBreakingChange) && !isUserEdited && !dismissAll,
-    [isOutdated, hasBreakingChange, isUserEdited, dismissAll],
-  );
+  // const shouldShowUpdateComponent = useMemo(
+  //   () => (isOutdated || hasBreakingChange) && !isUserEdited && !dismissAll,
+  //   [isOutdated, hasBreakingChange, isUserEdited, dismissAll],
+  // );
+  /* Mason-210625: turn off update component feature */
+  const shouldShowUpdateComponent = false;
 
   const memoizedNodeToolbarComponent = useMemo(() => {
     return selected && selectedNodesCount === 1 ? (
@@ -403,7 +405,8 @@ function GenericNode({
           />
         )}
         {memoizedNodeToolbarComponent}
-        {shouldShowUpdateComponent && (
+        {/* Mason-210625: turn off update component feature */}
+        {/* {shouldShowUpdateComponent && (
           <NodeUpdateComponent
             hasBreakingChange={hasBreakingChange}
             showNode={showNode}
@@ -411,7 +414,7 @@ function GenericNode({
             loadingUpdate={loadingUpdate}
             setDismissAll={memoizedSetDismissAll}
           />
-        )}
+        )} */}
         <div
           data-testid={`${data.id}-main-node`}
           className={cn(
