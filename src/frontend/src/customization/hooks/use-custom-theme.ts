@@ -4,20 +4,18 @@ import { useEffect, useState } from "react";
 
 const useTheme = () => {
   const [systemTheme, setSystemTheme] = useState(false);
-  // const { setDark, dark } = useDarkStore((state) => ({
-  //   setDark: state.setDark,
-  //   dark: state.dark,
-  // }));
-  const dark = false;
-  const setDark = (dark: boolean) => {};
+  const { setDark, dark } = useDarkStore((state) => ({
+    setDark: state.setDark,
+    dark: state.dark,
+  }));
 
   const handleSystemTheme = () => {
-    // if (typeof window !== "undefined") {
-    //   const systemDarkMode = window.matchMedia(
-    //     "(prefers-color-scheme: dark)",
-    //   ).matches;
-    //   setDark(systemDarkMode);
-    // }
+    if (typeof window !== "undefined") {
+      const systemDarkMode = window.matchMedia(
+        "(prefers-color-scheme: dark)",
+      ).matches;
+      setDark(systemDarkMode);
+    }
   };
 
   useEffect(() => {

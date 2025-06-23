@@ -66,6 +66,7 @@ import {
 } from "./MemoizedComponents";
 import getRandomName from "./utils/get-random-name";
 import isWrappedWithClass from "./utils/is-wrapped-with-class";
+import ThemeButtons from "@/components/core/appHeaderComponent/components/ThemeButtons";
 
 const nodeTypes = {
   genericNode: GenericNode,
@@ -633,6 +634,9 @@ export default function Page({
               display: "none",
             }}
           ></div>
+          <div className="fixed bottom-2 right-2">
+            <ThemeButtons />
+          </div>
         </div>
       ) : (
         <div className="flex h-full w-full items-center justify-center">
@@ -642,3 +646,5 @@ export default function Page({
     </div>
   );
 }
+
+// Mason: anchor for the main page
