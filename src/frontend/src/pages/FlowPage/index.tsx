@@ -14,6 +14,10 @@ import useFlowStore from "../../stores/flowStore";
 import useFlowsManagerStore from "../../stores/flowsManagerStore";
 import Page from "./components/PageComponent";
 import { FlowSidebarComponent } from "./components/flowSidebarComponent";
+import { Button } from "@/components/ui/button";
+import { useUtilityStore } from "@/stores/utilityStore";
+import { PlayIcon, StopIcon } from "@radix-ui/react-icons";
+import { Loader2 } from "lucide-react";
 
 export default function FlowPage({ view }: { view?: boolean }): JSX.Element {
   const types = useTypesStore((state) => state.types);
@@ -46,6 +50,9 @@ export default function FlowPage({ view }: { view?: boolean }): JSX.Element {
   const updatedAt = currentSavedFlow?.updated_at;
   const autoSaving = useFlowsManagerStore((state) => state.autoSaving);
   const stopBuilding = useFlowStore((state) => state.stopBuilding);
+  const buildFlow = useFlowStore((state) => state.buildFlow);
+
+  const [sessionId, setSessionId] = useState<string>(currentFlowId);
 
   const { mutateAsync: getFlow } = useGetFlow();
 
@@ -179,7 +186,35 @@ export default function FlowPage({ view }: { view?: boolean }): JSX.Element {
             <SidebarProvider width="17.5rem" defaultOpen={!isMobile}>
               {!view && <FlowSidebarComponent isLoading={isLoading} />}
               <main className="flex w-full overflow-hidden">
-                <div className="h-full w-full">
+                <div className="relative h-full w-full">
+                  <Button
+                    className="absolute right-[72px] top-[16px] z-10"
+                    onClick={async () => {
+                      if (isBuilding) {
+                        stopBuilding();
+                      } else {
+                        await buildFlow({
+                          silent: true,
+                          session: sessionId,
+                        }).catch((err) => {
+                          console.error(err);
+                        });
+                      }
+                    }}
+                    variant={isBuilding ? "destructive" : "primary"}
+                  >
+                    {isBuilding ? (
+                      <>
+                        <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                        Stop Replay
+                      </>
+                    ) : (
+                      <>
+                        <PlayIcon className="mr-2 h-4 w-4" />
+                        Replay
+                      </>
+                    )}
+                  </Button>
                   <Page setIsLoading={setIsLoading} />
                 </div>
               </main>
