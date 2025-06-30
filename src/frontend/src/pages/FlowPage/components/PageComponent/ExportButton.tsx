@@ -47,19 +47,19 @@ export default function ExportButton({ includeApiKeys = false }: { includeApiKey
   };
 
   return (
-        <Button
-          variant="primary"
-          size="icon"
-          className="absolute left-[16px] top-[16px] z-10 p-2"
-          onClick={handleExport}
-          aria-label="Export Flow"
-        >
-          <IconComponent
-            name="Download"
-            className="h-5 w-5 text-primary"
-            aria-hidden="true"
-          />
-          Export
-        </Button>
+    <Button
+      variant="primary"
+      size="icon"
+      className="absolute left-[160px] top-[16px] z-10 p-2"
+      onClick={handleExport}
+      aria-label="Export Flow"
+    >
+      <IconComponent
+        name="Download"
+        className="h-5 w-5 text-primary"
+        aria-hidden="true"
+      />
+      Export
+    </Button>
   );
 }
