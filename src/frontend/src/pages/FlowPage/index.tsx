@@ -18,8 +18,11 @@ import { Button } from "@/components/ui/button";
 import { useUtilityStore } from "@/stores/utilityStore";
 import { PlayIcon, StopIcon } from "@radix-ui/react-icons";
 import { Loader2 } from "lucide-react";
+import ExportButton from "./components/PageComponent/ExportButton";
+import { useSearchParams } from "react-router-dom";
 
 export default function FlowPage({ view }: { view?: boolean }): JSX.Element {
+  const [searchParams] = useSearchParams();
   const types = useTypesStore((state) => state.types);
 
   useGetTypes({
@@ -187,6 +190,9 @@ export default function FlowPage({ view }: { view?: boolean }): JSX.Element {
               {!view && <FlowSidebarComponent isLoading={isLoading} />}
               <main className="flex w-full overflow-hidden">
                 <div className="relative h-full w-full">
+                  {searchParams.get("isAdmin") === "true" && (
+                    <ExportButton includeApiKeys={true} />
+                  )}
                   <Button
                     className="absolute right-[72px] top-[16px] z-10"
                     onClick={async () => {
