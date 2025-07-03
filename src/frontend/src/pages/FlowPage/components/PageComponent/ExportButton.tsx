@@ -50,7 +50,7 @@ export default function ExportButton({ includeApiKeys = false }: { includeApiKey
     <Button
       variant="primary"
       size="icon"
-      className="absolute left-[160px] top-[16px] z-10 p-2"
+      className="absolute left-[8px] top-[64px] z-10 p-2"
       onClick={handleExport}
       aria-label="Export Flow"
     >
